@@ -2,14 +2,14 @@
 
 DOCKER_REGISTRY="shinyspiderdude"
 
-IMAGES_ORDER = ['base', 'python', 'glibc', 'java7', 'java8', 'java7-with-takipi', 'java8-with-takipi', 'java7-jdk', 'java8-jdk', 'maven-java7', 'maven-java8', 'tomcat6', 'tomcat6-se', 'tomcat8', 'tomcat8-se', 'jar-runner', 'activemq']
+IMAGES_ORDER = ['base', 'python', 'glibc', 'java7', 'java8', 'java7-jdk', 'java8-jdk', 'maven-java7', 'maven-java8', 'tomcat6', 'tomcat8', 'jar-runner', 'activemq']
 
 @PUSH = false
 
 @FAILED_IMAGES = []
 
 def check_that_all_images_will_be_created
-	images = Dir.entries(Dir.pwd).select {|entry| File.directory? File.join(Dir.pwd, entry) and !(entry =='.' || entry == '..') }
+	images = Dir.entries(Dir.pwd).select {|entry| File.directory? File.join(Dir.pwd, entry) and !entry.start_with?(".") }
 
 	image_difference = images - IMAGES_ORDER
 
@@ -20,6 +20,7 @@ end
 
 
 def create_image(image)
+	puts image
         if (image == "--all") 
 		check_that_all_images_will_be_created
 		IMAGES_ORDER.each {|image| create_image image}

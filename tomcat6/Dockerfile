@@ -1,4 +1,4 @@
-FROM shinyspiderdude/java7-with-takipi
+FROM shinyspiderdude/java7
 
 ENV TOMCAT_VERSION=6 \
 	TOMCAT_UPDATE=44 \

@@ -1,4 +1,4 @@
-FROM shinyspiderdude/java8-with-takipi
+FROM shinyspiderdude/java8
 
 ENV TOMCAT_VERSION=8 \
 	TOMCAT_UPDATE=32 \
