@@ -1,4 +1,4 @@
-FROM shinyspiderdude/java8-with-takipi
+FROM shinyspiderdude/java8
 
 MAINTAINER Ilan G 
 
